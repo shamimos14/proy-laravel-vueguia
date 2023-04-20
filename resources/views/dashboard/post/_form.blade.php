@@ -1,4 +1,5 @@
  @csrf
+ <input type="number" name="user_id" id="user_id" value="{{ old('user_id', $user->id) }}" readonly hidden />
  <div class="row">
      <div class="form-group">
          <label for="name">Articulo</label><input class="form-control" type="text" name="name" id="name"

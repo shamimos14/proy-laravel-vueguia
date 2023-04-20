@@ -1,4 +1,5 @@
 @csrf
+<input type="number" name="user_id" id="user_id" value="{{ old('user_id', $user->id) }}" readonly hidden />
 <div class="row">
     <div class="form-group">
         <label for="name">Articulo</label><input class="form-control" type="text" name="name" id="name"
@@ -9,7 +10,7 @@
 <div class="row form-group">
     <label for="description">Contenido</label>
     <textarea class="form-control" name="description" id="description" rows="10" rows="10"
-        {{ old('description', $category->description) }}></textarea>
+        >{{ old('description', $category->description) }}</textarea>
 </div>
 
 <div class="row center">

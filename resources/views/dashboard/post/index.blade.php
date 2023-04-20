@@ -12,6 +12,7 @@
                 <td>Descripcion</td>
                 <td>Categoría</td>
                 <td>Estado</td>
+                <td>Autor</td>
                 <td>Fecha de Creacion</td>
                 <td>Fecha de Modificacion</td>
                 <td>Acciones</td>
@@ -25,19 +26,19 @@
                 <td>{{ $post->description }}</td>
                 <td>{{ $post->category->name}} </td>
                 <td>{{ $post->state}}</td>
+                <td>{{ $post->user->name}}</td> 
                 <td>{{ $post->created_at->format('d-m-Y') }}</td>
                 <td>{{ $post->updated_at->format('d-m-Y') }}</td>
                 <td>
                     @can('editar-post')
                     <a href="{{ route('post.edit',$post->id) }}" class="btn btn-primary">Actualizar</a>
                     @endcan
-
-                    @can('borrar-post')
-                    <button data-toggle="modal" data-target="#deleteModal" data-id="{{ $post->id }}"
-                        class="btn btn-danger">Eliminar</button>
-                    @endcan
-    
-                    
+                    @if ($user->id === $post->user->id)
+                        @can('borrar-post')
+                        <button data-toggle="modal" data-target="#deleteModal" data-id="{{ $post->id }}"
+                            class="btn btn-danger">Eliminar</button>
+                        @endcan
+                    @endif
                 </td>
             </tr>
             @endforeach

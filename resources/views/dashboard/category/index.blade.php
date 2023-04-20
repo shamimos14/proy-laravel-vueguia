@@ -13,6 +13,7 @@
                 <td>Id</td>
                 <td>Nombre</td>
                 <td>Descripcion</td>
+                <td>Autor</td>
                 <td>Fecha de Creacion</td>
                 <td>Fecha de Modificacion</td>
             </tr>
@@ -23,17 +24,20 @@
                 <td>{{ $category->id }} </td>
                 <td>{{ $category->name }}</td>
                 <td>{{ $category->description }}</td>
+                <td>{{ $category->user->name }}</td>
                 <td>{{ $category->created_at->format('d-m-Y') }}</td>
                 <td>{{ $category->updated_at->format('d-m-Y') }}</td>
                 <td>
                     @can('editar-category')
                     <a href="{{ route('category.edit',$category->id) }}" class="btn btn-primary">Actualizar</a>
                     @endcan
+                    @if ($user->id === $category->user->id)
+                        @can('borrar-category')
+                        <button data-toggle="modal" data-target="#deleteModal" data-id="{{ $category->id }}"
+                            class="btn btn-danger">Eliminar</button> 
+                        @endcan
+                    @endif
                     
-                    @can('borrar-category')
-                    <button data-toggle="modal" data-target="#deleteModal" data-id="{{ $category->id }}"
-                        class="btn btn-danger">Eliminar</button> 
-                    @endcan
                     
                 </td>
             </tr>

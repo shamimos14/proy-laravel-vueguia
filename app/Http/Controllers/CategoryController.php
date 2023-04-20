@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCategory;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -16,18 +17,18 @@ class CategoryController extends Controller
         $this->middleware('permission:borrar-category',['only'=>['destroy']]);
     }
     
-    public function index()
+    public function index(Request $request)
     {
         $categories = Category::orderBy('created_at', 'desc')->paginate(5);
-        return view('dashboard.category.index',['categories'=>$categories]);
+        return view('dashboard.category.index',['categories'=>$categories, 'user'=>$request->user()]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('dashboard.category.create',['category' => new Category()]);
+        return view('dashboard.category.create',['category' => new Category(), 'user'=> $request->user()]);
     }
 
     /**
@@ -50,9 +51,9 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit(Category $category, Request $request)
     {
-        return view('dashboard.category.edit',["category" => $category]);
+        return view('dashboard.category.edit',["category" => $category, 'user'=> $request->user()]);
     }
 
     /**

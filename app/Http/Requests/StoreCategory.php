@@ -23,7 +23,8 @@ class StoreCategory extends FormRequest
     {
         return [
             'name'=>'required|min:3|max:120',
-            'description'=>'required|min:2|max:250'
+            'description'=>'required|min:2|max:250',
+            'user_id'=>'required'
         ];
     }
 }

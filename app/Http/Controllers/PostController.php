@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePost;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -17,21 +18,19 @@ class PostController extends Controller
         $this->middleware('permission:borrar-post',['only'=>['destroy']]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $posts = Post::orderBy('created_at', 'desc')->paginate(5);
-        return view('dashboard.post.index',['posts'=>$posts]);
-        
-
+        return view('dashboard.post.index',['posts'=>$posts, 'user'=>$request->user()]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     { 
         $categories = Category::orderBy('created_at', 'desc')->paginate();
-        return view('dashboard.post.create',['post' => new Post(),'categories' => $categories]);
+        return view('dashboard.post.create',['post' => new Post(),'categories' => $categories, 'user' => $request->user()]);
     }
 
     /**
@@ -56,10 +55,10 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
+    public function edit(Post $post, Request $request)
     {
         $categories = Category::orderBy('created_at', 'desc')->paginate();
-        return view('dashboard.post.edit',["post" => $post, 'categories' => $categories]);
+        return view('dashboard.post.edit',["post" => $post, 'categories' => $categories, 'user'=>$request->user()]);
     }
 
     /**
