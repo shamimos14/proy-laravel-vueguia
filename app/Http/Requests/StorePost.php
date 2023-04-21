@@ -26,6 +26,7 @@ class StorePost extends FormRequest
             'description'=>'required|min:2|max:250',
             'category_id'=>'required',
             'user_id'=>'required',
+            'reply_id'=>'required',
             'state' =>'required'
         ];
     }

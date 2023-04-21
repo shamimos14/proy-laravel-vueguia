@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
@@ -37,5 +38,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 require __DIR__.'/auth.php';
 Route::resource('/dashboard/post',PostController::class);
 Route::resource('/dashboard/category',CategoryController::class);
+Route::resource('/dashboard/reply',ReplyController::class);
 Route::resource('roles',RolController::class);
 Route::resource('usuarios',UsuarioController::class);
