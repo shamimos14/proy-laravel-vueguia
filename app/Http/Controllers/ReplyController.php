@@ -40,7 +40,7 @@ class ReplyController extends Controller
     public function store(StoreReply $request)
     {
         Reply::create($request->validated());
-        return back()->with('status','Publicación creada con éxito');
+        return back()->with('status','Reply creada con éxito');
     }
 
     /**
@@ -66,7 +66,7 @@ class ReplyController extends Controller
     public function update(StoreReply $request, Reply $reply)
     {
         $reply->update($request->validated());
-        return back()->with('status', 'Post modificado exitosamente');
+        return back()->with('status', 'Reply modificado exitosamente');
     }
 
     /**
@@ -75,6 +75,6 @@ class ReplyController extends Controller
     public function destroy(Reply $reply)
     {
         $reply->delete();
-        return back()->with('status', 'Post eliminado exitosamente');
+        return back()->with('status', 'Reply eliminado exitosamente');
     }
 }
