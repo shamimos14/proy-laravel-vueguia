@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePost;
 use App\Models\Category;
 use App\Models\Post;
-use App\Models\User;
+use App\Models\Reply;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -49,7 +49,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('dashboard.post.show',["post" => $post]);
+        $replies = Reply::where('post_id', $post->id)->paginate(5);
+        return view('dashboard.post.show',["post" => $post, "replies"=>$replies]);
     }
 
     /**

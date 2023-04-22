@@ -33,6 +33,9 @@
                     @can('editar-post')
                     <a href="{{ route('post.edit',$post->id) }}" class="btn btn-primary">Actualizar</a>
                     @endcan
+                    @can('ver-reply')
+                    <a href="{{ route('post.show',$post->id) }}" class="btn btn-secondary">Replys</a>
+                    @endcan
                     @if ($user->id === $post->user->id)
                         @can('borrar-post')
                         <button data-toggle="modal" data-target="#deleteModal" data-id="{{ $post->id }}"

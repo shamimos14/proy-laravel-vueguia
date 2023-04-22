@@ -26,6 +26,11 @@
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="url('dashboard/reply')" :active="request()->routeIs('reply')">
+                            {{ __('Replys') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="url('roles')" :active="request()->routeIs('roles')">
                             {{ __('Roles') }}
                         </x-nav-link>

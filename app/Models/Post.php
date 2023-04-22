@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable=['name','description','category_id','state', 'user_id', 'reply_id'];
+    protected $fillable=['name','description','category_id','state', 'user_id'];
 
     public function category(){
         return $this->belongsTo(Category::class);
@@ -19,6 +19,6 @@ class Post extends Model
     }
 
     public function reply(){
-        return $this->belongsTo(Reply::class);
+        return $this->hasMany(Reply::class);
     }
 }

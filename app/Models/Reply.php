@@ -9,7 +9,9 @@ class Reply extends Model
 {
     use HasFactory;
     
+    protected $fillable=['post_id','text'];
+
     public function post(){
-        return $this->hasMany(Post::class);
+        return $this->belongsTo(Post::class);
     }
 }

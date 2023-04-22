@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 
@@ -23,6 +22,11 @@ class SeederTablaPermisos extends Seeder
             'crear-post',
             'editar-post',
             'borrar-post',
+
+            'ver-reply',
+            'crear-reply',
+            'editar-reply',
+            'borrar-reply',
 
             'ver-category',
             'crear-category',
